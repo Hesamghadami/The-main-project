@@ -133,6 +133,11 @@ STATICFILES_DIRS = [
     BASE_DIR/'media',
 ]
 
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+AUTH_USER_MODEL = 'accounts.CustumUser'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
