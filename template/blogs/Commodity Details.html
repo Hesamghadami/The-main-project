@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +7,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Sign Up</title>
+  <title>Commodity Details</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -44,16 +45,16 @@
   <header id="header" class="fixed-top header-inner-pages">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="{% url 'home:home' %}">Arsha</a></h1>
+      <h1 class="logo me-auto"><a href="index.html">Arsha</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="{% static 'assets/img/logo.png' %}" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " href="{% url 'home:home' %}">Home</a></li>
+          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link   scrollto" href="#portfolio">Portfolio</a></li>
+          <li><a class="nav-link  active scrollto" href="#portfolio">Portfolio</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           <li><a class="nav-link scrollto" href="{% url 'home:contact' %}">Contact</a></li>
           <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
@@ -66,57 +67,70 @@
 
   <main id="main">
 
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
 
-<!-- ======= Breadcrumbs ======= -->
-<section id="breadcrumbs" class="breadcrumbs">
-    <div class="container">
-  
-      <ol>
-        <li><a href="{% url 'home:home' %}">Home</a></li>
-        <li>Sign Up</li>
-      </ol>
-  
-  
-    </div>
-  </section><!-- End Breadcrumbs -->
-          
-      
+        <ol>
+          <li><a href="{% url 'home:home'%}">Home</a></li>
+          <li>Commodity Details</li>
+        </ol>
+        <h2>Commodity Details</h2>
 
-<head>
-    <meta charset="UTF-8">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'><link rel="stylesheet" href="{% static 'assets/css/stylee.css' %}">
+      </div>
+    </section><!-- End Breadcrumbs -->
 
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<div class="login-container">
-    <form action="" class="form-login">
-        <ul class="login-nav">
-            <li class="login-nav__item active">
-                <a href="#">Sign In</a>
-            </li>
-            <li class="login-nav__item">
-                <a href="#">Sign Up</a>
-            </li>
-        </ul>
-        <label for="login-input-user" class="login__label">
-            Username
-        </label>
-        <input id="login-input-user" class="login__input" type="text" />
-        <label for="login-input-password" class="login__label">
-            Password
-        </label>
-        <input id="login-input-password" class="login__input" type="password" />
-        <button class="login__submit" disabled>Sign in</button>
-    </form>
-    <a href="#" class="login__forgot">Forgot Password?</a>
-</div>
-<!-- partial -->
-    
-</body>
-</html>
-<!-- partial -->
-              
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center">
+
+                <div class="swiper-slide">
+                  <img src="{% static 'assets/img/portfolio/portfolio-1.jpg' %}" alt="">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="{% static 'assets/img/portfolio/portfolio-2.jpg' %}" alt="">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="{% static 'assets/img/portfolio/portfolio-3.jpg' %}" alt="">
+                </div>
+
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-info">
+              <h3>Project information</h3>
+              <ul>
+                <li><strong>Category</strong>: Web design</li>
+                <li><strong>Client</strong>: ASU Company</li>
+                <li><strong>Project date</strong>: 01 March, 2020</li>
+                <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
+              </ul>
+            </div>
+            <div class="portfolio-description">
+              <h2>This is an example of portfolio detail</h2>
+              <p>
+                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Details Section -->
+
+  </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-{% include 'inherit/base.html' %}
+  {% include 'inherit/base.html' %}

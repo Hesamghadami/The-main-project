@@ -24,6 +24,7 @@ from django.contrib.sitemaps.views import sitemap
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
+    path('blogs/', include('blogs.urls')),
     path('accounts/',include("accounts.urls")),
     path('accounts/',include("django.contrib.auth.urls")),
 
