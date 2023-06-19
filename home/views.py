@@ -19,13 +19,14 @@ def home(req, cat=None):
         'last_nine_posts' : last_nine_posts,
         }
         return render(req, 'home/index.html', context=context)
+        
     
 
     elif req.method == 'POST':
         form = NewsLetterForm(req.POST)
         if form.is_valid():
             form.save()   
-        return redirect('/')
+            return redirect('/')
     
 
 def contact(req):
