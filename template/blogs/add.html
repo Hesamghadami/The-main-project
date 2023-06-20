@@ -158,7 +158,7 @@
     </head>
     <body>
      <h1>Add New Post</h1>
-     <form action="{% url 'blog:add' %}" method="post">
+     <form action="{% url 'blog:add' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
       <div class="form-group">
        <label for="{{ form.title.id_for_label }}">Title:</label>
@@ -204,7 +204,7 @@
         <label for="{{ form.category.id_for_label }}">Category:</label>
         <select id="category" name="category">
             {% for  cat in category  %}
-          <option value="">{{cat.name}}</option>
+          <option value="{{cat.name}}">{{cat.name}}</option>
           {% endfor %}
         </select>
             </div>
