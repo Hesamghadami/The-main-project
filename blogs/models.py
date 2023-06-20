@@ -8,19 +8,19 @@ class Category(models.Model):
         return self.name
 
 class Post(models.Model):
-    title = models.CharField(max_length= 255)
+    title = models.CharField(max_length= 255) 
+    client_url = models.CharField(max_length=255, default='#') 
+    client = models.ForeignKey(CustumUser, on_delete= models.CASCADE)
     content = models.TextField()
-    status = models.BooleanField(default=False)
     image1 = models.ImageField(upload_to= 'blog')
     image2 = models.ImageField(upload_to= 'blog')
     image3 = models.ImageField(upload_to= 'blog')
-    client = models.ForeignKey(CustumUser, on_delete= models.CASCADE)
-    client_url = models.CharField(max_length=255, default='#')
+    published_date = models.DateTimeField()
     category = models.ManyToManyField(Category)
     counted_views = models.IntegerField(default=0)
     created_date = models.DateTimeField(auto_now_add=True)
-    published_date = models.DateTimeField()
     updated_date = models.DateTimeField(auto_now_add=True)
+    status = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return self.title

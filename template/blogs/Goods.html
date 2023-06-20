@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Goods Details</title>
+  <title>Goods</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -54,7 +54,7 @@
           <li><a class="nav-link scrollto " href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link  active scrollto" href="#portfolio">Portfolio</a></li>
+          <li><a class="nav-link  active scrollto" href="#">Goods</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           <li><a class="nav-link scrollto" href="{% url 'home:contact' %}">Contact</a></li>
           <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
@@ -73,70 +73,71 @@
 
         <ol>
           <li><a href="{% url 'home:home'%}">Home</a></li>
-          <li>Goods Details</li>
+          <li>Goods</li>
         </ol>
-        <h2>Goods Details</h2>
+        <h2>Goods</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
 
-    <!-- ======= Portfolio Details Section ======= -->
 
-    
-    <section id="portfolio-details" class="portfolio-details">
-      
-      <div class="container">
 
-        <div class="row gy-4">
+    <section id="portfolio" class="portfolio">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="section-title">
+            <h2>Goods</h2>
+            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          </div>
+          {% comment %} <br>
+          <br> {% endcomment %}
+          {% comment %} <form class="search-form" action="{% url 'blog:blog_home_with_search' %}?search=">
+            <input placeholder="Search Posts" name="search" type="text"
+                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form> {% endcomment %}
+          {% comment %} <br>
+          <br> {% endcomment %}
+  
+          <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+            <li data-filter="*" class="filter-active">All</li>
+          {% for cat in category.all %}
+            <li data-filter=".filter-app">{{cat.name}}</li>
+          {% endfor %}
+          </ul>
+          
 
-          <div class="col-lg-8">
-            <div class="portfolio-details-slider swiper">
-              <div class="swiper-wrapper align-items-center">
-
-                <div class="swiper-slide">
-                  <img src={{post.image1.url}} alt="">
+          <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+            {% for post in posts %}
+              <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                <div class="portfolio-img"><img src={{post.image1.url}} class="img-fluid" alt=""></div>
+                <div class="portfolio-info">
+                  <h4>{{post.title}}</h4>
+                  {% for category in post.category.all  %}
+                    <p>{{category.name}} </p>
+                  {% endfor %}
+                  <a href={{post.image1.url}} data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title={{post.title}}><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'blog:blog_single' pid=post.id %}" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
-
-                <div class="swiper-slide">
-                  <img src={{post.image2.url}} alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src={{post.image3.url}} alt="">
-                </div>
-
               </div>
-              <div class="swiper-pagination"></div>
-            </div>
+            {% endfor %}
           </div>
-          
-          <div class="col-lg-4">
-            <div class="portfolio-info">
-              <h3>Project information</h3>
-              <ul>
-                {% for  cat in post.category.all %}
-                <li><strong>Category</strong>: {{cat.name}}</li>
-                {% endfor %}
-                <li><strong>Client</strong>:{{post.client}} </li>
-                <li><strong>Published date</strong>: {{post.published_date}}</li>
-                <li><strong>Client website</strong>: <a href="{{post.client_url}}">{{post.client_url}}</a></li>
-              </ul>
-            </div>
-            <div class="portfolio-description">
-              <h2>{{post.title}}</h2>
-              <p>
-              {{post.content}}
-              </p>
-            </div>
-          </div>
-          
-
+  
         </div>
+      </section><!-- End Portfolio Section -->
 
-      </div>
-    </section><!-- End Portfolio Details Section -->
 
-  </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
-  {% include 'inherit/base.html' %}
+
+
+
+
+
+
+
+
+
+
+
+<!-- ======= Footer ======= -->
+    {% include 'inherit/base.html' %}

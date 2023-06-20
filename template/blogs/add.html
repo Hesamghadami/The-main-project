@@ -1,0 +1,225 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Add A New Good</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Arsha
+  * Updated: May 30 2023 with Bootstrap v5.3.0
+  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top header-inner-pages">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo me-auto"><a href="{% url 'home:home' %}">Arsha</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto"><img src="{% static 'assets/img/logo.png' %}" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto " href="{% url 'home:home' %}">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link  active scrollto" href="{% url 'blog:blog_home' %}">Portfolio</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'home:contact' %}">Contact</a></li>
+          <li><a class="getstarted scrollto" href={% url 'blog:add' %}>Get Started</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'home:home'%}">Home</a></li>
+          <li>Add A New Good</li>
+        </ol>
+        <h2>Add A New Good</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+     <title>Add New Post</title>
+     <style>
+      body {
+       background-color: #f2f2f2;
+       font-family: Arial, sans-serif;
+      }
+      
+      h1 {
+       color: #0077b3;
+       text-align: center;
+       margin-top: 50px;
+      }
+      
+      form {
+       background-color: #ffffff;
+       border-radius: 5px;
+       padding: 20px;
+       margin-top: 30px;
+       max-width: 500px;
+       margin-left: auto;
+       margin-right: auto;
+      }
+      
+      label {
+       display: block;
+       font-weight: bold;
+       margin-bottom: 10px;
+      }
+      
+      input[type="text"], textarea {
+       width: 100%;
+       padding: 10px;
+       border-radius: 5px;
+       border: none; 
+                box-shadow:none; 
+                border-bottom:solid 1px #0077b3; 
+                margin-bottom:20px
+            }
+            
+            input[type="submit"] {
+             background-color:#0077b3; 
+             color:#fff; 
+             padding-left :20px; 
+             padding-right :20px; 
+             padding-top :10px; 
+             padding-bottom :10px; 
+             border:none; 
+             border-radius :5px
+            }
+            
+            input[type="submit"]:hover{
+                background-color:#005580
+            }
+            
+            .form-group{
+                margin-bottom :20px
+            }
+            
+            .form-group label{
+                display:block
+            }
+            
+            .form-group input[type="text"], .form-group textarea{
+                width :100%; padding :10px; border-radius :5px; border:none; box-shadow:none; border-bottom:solid 1px #0077b3
+            }
+            
+            .form-group input[type="text"]:focus, .form-group textarea:focus{
+                outline:none;
+                border-color:#005580;
+                box-shadow:0 0 5px #005580
+            }
+     </style>
+    </head>
+    <body>
+     <h1>Add New Post</h1>
+     <form action="{% url 'blog:add' %}" method="post">
+        {% csrf_token %}
+      <div class="form-group">
+       <label for="{{ form.title.id_for_label }}">Title:</label>
+       <input type="text" id="title" name="title" placeholder="Enter post title" required>
+      </div>
+      <div class="form-group">
+        <label for="{{ form.client_url.id_for_label }}">Your website:</label>
+        <input type="text" id="client_url" name="client_url" placeholder="Enter client_url" required>
+       </div>
+      <div class="form-group">
+       <label for="{{ form.client.id_for_label }}">Author:</label>
+       <input type="text" id="client" name="client" placeholder="Enter author name" required>
+      </div>
+      
+      <div class="form-group">
+       <label for="{{ form.content.id_for_label }}">Content:</label>
+       <textarea id="content" name="content" rows="10" placeholder="Enter post content" required></textarea>
+            </div>
+
+      <div class="form-group">
+        <label for="{{ form.image1.id_for_label }}">Image 1:</label>
+        <input type="file" id="image1" name="image1" required>
+        </div>
+
+      <div class="form-group">
+        <label for="{{ form.image2.id_for_label }}">Image 2:</label>
+        <input type="file" id="image2" name="image2" required>
+        </div>
+
+
+      <div class="form-group">
+        <label for="{{ form.image3.id_for_label }}">Image 3:</label>
+        <input type="file" id="image3" name="image3" required>
+        </div>
+
+
+      <div class="form-group">
+            <label for="{{ form.published_date.id_for_label }}">Published Date:</label>
+            <input type="date" id="published_date" name="published_date" required> 
+           </div>
+
+      <div class="form-group">
+        <label for="{{ form.category.id_for_label }}">Category:</label>
+        <select id="category" name="category">
+            {% for  cat in category  %}
+          <option value="">{{cat.name}}</option>
+          {% endfor %}
+        </select>
+            </div>
+        
+    
+            <input type ="submit" value ="Submit Post">
+        </form>
+    
+    </body>
+    
+    </html> 
+
+
+
+
+
+    <!-- ======= Footer ======= -->
+  {% include 'inherit/base.html' %}
