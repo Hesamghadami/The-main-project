@@ -61,5 +61,6 @@ def add(req):
           if form.is_valid():
                form.save()
                return redirect('/blog/')
+               
 
 # Create your views here.
