@@ -169,8 +169,8 @@
         <input type="text" id="client_url" name="client_url" placeholder="Enter client_url" required>
        </div>
       <div class="form-group">
-       <label for="{{ form.client.id_for_label }}">Author:</label>
-       <input type="text" id="client" name="client" placeholder="Enter author name" required>
+       <label for="{{ form.client.id_for_label }}">Client:</label>
+       <input type="hidden" value="{{request.user.id}}" id="client" name="client" placeholder="Enter author name" required>
       </div>
       
       <div class="form-group">
