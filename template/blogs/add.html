@@ -158,7 +158,7 @@
     </head>
     <body>
      <h1>Add New Post</h1>
-     <form action="{% url 'blog:add' %}" method="post" enctype="multipart/form-data">
+     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
       <div class="form-group">
        <label for="{{ form.title.id_for_label }}">Title:</label>
