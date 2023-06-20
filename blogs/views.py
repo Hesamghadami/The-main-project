@@ -61,7 +61,7 @@ def add(req):
           print(req.POST)
           if form.is_valid():
                form.save()
-               return redirect('/blog/')
+               return redirect('blog:blog_home')
                
 
 # Create your views here.
