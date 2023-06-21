@@ -96,11 +96,11 @@
                 <a href="#">Sign In</a>
             </li>
             <li class="login-nav__item">
-                <a href="#">Sign Up</a>
+                <a href="{% url 'accounts:signup' %}">Sign Up</a>
             </li>
         </ul>
         <label for="login-input-user" class="login__label">
-            Username
+            Username or Email
         </label>
         <input id="login-input-user" class="login__input" type="text" />
         <label for="login-input-password" class="login__label">

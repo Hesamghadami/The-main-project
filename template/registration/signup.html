@@ -1,5 +1,5 @@
 {% load static %}
-<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -90,26 +90,52 @@
 <body>
 <!-- partial:index.partial.html -->
 <div class="login-container">
-    <form action="" class="form-login">
+    <form action="" class="form-login" enctype="multipart/form-data">
+      {% csrf_token %}
         <ul class="login-nav">
             <li class="login-nav__item active">
-                <a href="#">Sign In</a>
-            </li>
-            <li class="login-nav__item">
                 <a href="#">Sign Up</a>
             </li>
+            <li class="login-nav__item">
+                <a href="{% url 'accounts:login'%}">Sign In</a>
+            </li>
         </ul>
+
         <label for="login-input-user" class="login__label">
-            Username
+            Username:
         </label>
-        <input id="login-input-user" class="login__input" type="text" />
+        <input  name="username" id="id_username" class="login__input" type="text" required/>
+
+
+        <label for="login-input-email" class="login__label">
+            Email:
+        </label>
+        <input name="email" id="id_email" placeholder="Email Address" onfocus="this.placeholder = ''"
+        onblur="this.placeholder = 'Email Address '" required="" type="email" class="login__input">
+
+
         <label for="login-input-password" class="login__label">
-            Password
+            Password:
         </label>
-        <input id="login-input-password" class="login__input" type="password" />
-        <button class="login__submit" disabled>Sign in</button>
+        <input  name="password1" id="id_password1" class="login__input" type="password" required/>
+
+        <label for="login-input-password" class="login__label">
+            Password Confirmation:
+       </label>
+       <input  name="password2" id="id_password2" class="login__input" type="password" required/>
+
+        <label for="login-input-password" class="login__label">
+            Profile Photo:
+        </label>
+        <input type="file"  name="image" accept="image/*" id="id_image" required>
+        
+
+        <button type='submit' class="login__submit" >Sign Up</button>
     </form>
-    <a href="#" class="login__forgot">Forgot Password?</a>
+    <a href="{% url 'accounts:login' %}" class="login__forgot">Already Have An Account? Sign In</a>
+    <br>
+    <br>
+
 </div>
 <!-- partial -->
     

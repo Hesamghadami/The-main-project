@@ -47,11 +47,14 @@ def Logout(req) :
 def signup(req):
     if req.method == 'GET':
         form = SignUpForm()
-        return render(req, 'registration/signup.html', {'form': form})
+        context = {
+            'form':form
+        }
+        return render(req, 'registration/signup.html', context=context)
     
     elif req.method == 'POST':
         form = SignUpForm(req.POST, req.FILES)
-        print(form)
+        print(req.FILES)
         if form.is_valid():
             form.save()
             new_user = form.save()
@@ -59,8 +62,13 @@ def signup(req):
             new_user = authenticate(username=form.cleaned_data['username'],
                                     password=form.cleaned_data['password1'],
                                     email=form.cleaned_data['email'],
-                                    id_code=form.cleaned_data['id_code'],
                                     image=form.cleaned_data['image'],)
             login(req, new_user)
-            return HttpResponseRedirect("/")
+            return redirect('/')
+        
+        else:
+            messages.add_message(req,messages.ERROR,'Input data is not valid.')
+            return redirect('accounts:login')
+
+        
 # Create your views here.
