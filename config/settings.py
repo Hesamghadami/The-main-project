@@ -23,9 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-^_0vkqce_!lzxkdic72%$c1i=r2(e2(bt#+bu&y_i^fttxrr@e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -76,12 +75,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+
 
 
 # Password validation
@@ -121,21 +115,16 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR.joinpath('/static')
+
 
 
 MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR.joinpath('media')
-
-
-STATICFILES_DIRS = [
-    BASE_DIR/'static',
-    BASE_DIR/'media',
-]
 
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+
 AUTH_USER_MODEL = 'accounts.CustumUser'
 
 # Default primary key field type
