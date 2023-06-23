@@ -13,7 +13,7 @@ def blog_home(req, cat=None, username=None):
 
 
     if username:
-         posts = Post.objects.filter(author__username=username)
+         posts = Post.objects.filter(client__username=username)
         
     if cat:
          posts = Post.objects.filter(category__name=cat)
