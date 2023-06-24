@@ -4,7 +4,7 @@ from .forms import *
 from django.contrib.auth.decorators import login_required
 
 def blog_home(req, cat=None, username=None):
-    pass
+    
     posts = Post.objects.filter(status=True)
     category = Category.objects.all()
 

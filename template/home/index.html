@@ -337,12 +337,12 @@
           <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
 
-        <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+        {% comment %} <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
           <li data-filter="*" class="filter-active">All</li>
         {% for cat in category.all %}
           <li data-filter=".filter-app">{{cat.name}}</li>
         {% endfor %}
-        </ul>
+        </ul> {% endcomment %}
         
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
@@ -351,10 +351,10 @@
               <div class="portfolio-img"><img src={{post.image1.url}} class="img-fluid" alt=""></div>
               <div class="portfolio-info">
                 <h4>{{post.title}}</h4>
-                {% for category in post.category.all  %}
-                  <p>{{category.name}} </p>
+                {% for cat in post.category.all  %}
+                <p><a href="{% url 'blog:blog_home_with_category' cat=cat.name %}">{{cat.name}}</a></p>
                 {% endfor %}
-                <a href="{% static 'assets/img/portfolio/portfolio-1.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+                <a href={{post.image1.url}} data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title=""><i class="bx bx-plus"></i></a>
                 <a href="{% url 'blog:blog_single' pid=post.id %}" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
               </div>
             </div>
