@@ -24,5 +24,8 @@ class Post(models.Model):
 
     def __str__(self) -> str:
         return self.title
+    
+    class Meta:
+        ordering = ('-created_date')
 
 # Create your models here.

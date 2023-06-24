@@ -3,7 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from .forms import SignUpForm
+from .forms import *
 from .models import CustumUser
 from django.http import HttpResponseRedirect
 
@@ -16,25 +16,31 @@ def Login(req) :
     
     elif req.method == 'GET':
         form = AuthenticationForm()
-        return render(req, 'registration/login.html', {'form': form})
+        captcha = CaptchaForm()
+        return render(req, 'registration/login.html', {'form': form, 'captcha': captcha})
     
     elif req.method == 'POST':
-        username = req.POST.get('username')
-        password = req.POST.get('password')
-        user = authenticate(username=username,password=password)
-        userinput = req.POST['username']
-        try:
-            username = CustumUser.objects.get(email=userinput).username
-        except CustumUser.DoesNotExist:
-            username = req.POST['username']
-        password = req.POST['password']
-        user = authenticate(username=username, password=password)
+        captcha = CaptchaForm(req.POST)
+        if captcha.is_valid():
+            username = req.POST.get('username')
+            password = req.POST.get('password')
+            user = authenticate(username=username,password=password)
+            userinput = req.POST['username']
+            try:
+                username = CustumUser.objects.get(email=userinput).username
+            except CustumUser.DoesNotExist:
+                username = req.POST['username']
+            password = req.POST['password']
+            user = authenticate(username=username, password=password)
 
-        if user is not None:
-            login(req, user)
-            return redirect('/')
-        else :
-            messages.add_message(req, messages.ERROR , 'username or password is not valid ! ...')
+            if user is not None:
+                login(req, user)
+                return redirect('/')
+            else :
+                messages.add_message(req, messages.ERROR , 'username or password is not valid ! ...')
+                return redirect('accounts:login')
+        else : 
+            messages.add_message(req, messages.ERROR , 'captcha not valid')
             return redirect('accounts:login')
 
 @login_required
