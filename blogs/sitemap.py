@@ -10,7 +10,7 @@ class DynamicSiteMaps(sitemaps.Sitemap):
     changefreq = 'daily'
 
     def items(self):
-        return Post.objects.filter(status=True).order_by('created_date')
+        return Post.objects.filter(status=True).order_by('-created_date')
     
     def location(self, obj):
-        return 'blog/post_details/%s'%obj.id
+        return '/blog/post_details/%s'%obj.id

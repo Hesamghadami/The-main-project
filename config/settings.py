@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'compressor',
     'robots',
     'captcha',
@@ -43,6 +45,8 @@ INSTALLED_APPS = [
     'blogs', 
     'accounts',
 ]
+
+SITE_ID = 1
 
 
 

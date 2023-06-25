@@ -19,7 +19,15 @@ from django.urls import path , include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
+from home.sitemap import StaticSiteMaps
+from blogs.sitemap import DynamicSiteMaps
 
+
+
+sitemaps ={
+    'static':StaticSiteMaps,
+    'blog':DynamicSiteMaps,
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +37,13 @@ urlpatterns = [
     path('accounts/',include("django.contrib.auth.urls")),
     path('robots.txt/', include('robots.urls')),
     path('captcha/', include('captcha.urls')),
+    path(
+    "sitemap.xml",
+    sitemap,
+    {"sitemaps": sitemaps},
+    name="django.contrib.sitemaps.views.sitemap",
+    
+)
 
 ]
 
