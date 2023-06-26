@@ -90,7 +90,7 @@
 <body>
 <!-- partial:index.partial.html -->
 <div class="login-container">
-    <form action="" class="form-login">
+    <form action="" class="form-login" method="post">
         <ul class="login-nav">
             <li class="login-nav__item active">
                 <a href="#">Sign In</a>
@@ -107,7 +107,10 @@
             Password
         </label>
         <input id="login-input-password" class="login__input" type="password" />
-        <button class="login__submit">Sign in</button>
+        <br>
+        <br>
+        <br>
+        <button type='submit' class="login__submit">Sign in</button>
     </form>
     <a href="{% url 'password_reset' %}" class="login__forgot">Forgot Password?</a>
 </div>
