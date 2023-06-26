@@ -91,6 +91,7 @@
 <!-- partial:index.partial.html -->
 <div class="login-container">
     <form action="" class="form-login" method="post">
+      {% csrf_token %}
         <ul class="login-nav">
             <li class="login-nav__item active">
                 <a href="#">Sign In</a>
