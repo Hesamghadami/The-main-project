@@ -19,9 +19,9 @@
                 <div class="navbar-links">
                     <ul>
                       <li><a href="{% url 'home:home' %}" target="_blank">Home</a></li>
-                      <li><a href="#" target="_blank">About</a></li>
-                      <li><a href="{% url 'home:contact' %}" target="_blank">Contact</a></li>
-                      <li><a href="{% url 'blog:add' %}" class="btn-request" target="_blank">Get Started</a></li>
+                      <li><a href="{% url 'home:home' %}#about" target="_blank">About</a></li>
+                      <li><a href="{% url 'home:home' %}#contact" target="_blank">Contact</a></li>
+                      <li><a href="{% url 'accounts:login' %}" class="btn-request" target="_blank">Sign In/Up</a></li>
                     </ul>
                 </div>
             </div>

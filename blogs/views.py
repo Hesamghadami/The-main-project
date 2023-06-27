@@ -2,32 +2,49 @@ from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.contrib import messages
 
 def blog_home(req, cat=None, username=None):
-    
-    posts = Post.objects.filter(status=True)
-    category = Category.objects.all()
+    try :
+          posts = Post.objects.filter(status=True)
+          category = Category.objects.all()
 
-    #adv = AdvertisModel.objects.all()[3]
+          #adv = AdvertisModel.objects.all()[3]
 
 
 
-    if username:
-         posts = Post.objects.filter(client__username=username)
-        
-    if cat:
-         posts = Post.objects.filter(category__name=cat)
+          if username:
+               posts = Post.objects.filter(client__username=username)
+               
+          if cat:
+               posts = Post.objects.filter(category__name=cat)
 
-    if req.GET.get('search'):
-         posts = Post.objects.filter(content__contains=req.GET.get('search'))
+          if req.GET.get('search'):
+               posts = Post.objects.filter(content__contains=req.GET.get('search'))
 
-         
-    context = {
-        'posts' : posts,
-        'category' : category,
-    }
-    return render(req, 'blogs/Goods.html', context=context)
+               
+          posts = Paginator(posts, 4)
 
+          try:
+               page_number = req.GET.get('page')
+               posts = posts.get_page(page_number)
+
+
+          except PageNotAnInteger:
+               posts = posts.get_page(1)
+               
+          except EmptyPage:
+               posts = posts.get_page(1)
+
+               
+          context = {
+               'posts' : posts,
+               'category' : category,
+          }
+          return render(req, 'blogs/Goods.html', context=context)
+    except:
+          return render(req, 'blogs/404.html')
 
 
 
@@ -62,6 +79,9 @@ def add(req):
           if form.is_valid():
                form.save()
                return redirect('blog:blog_home')
-               
+          else:
+               messages.add_message(req,messages.ERROR,'Input data is not valid.')
+               return redirect('blog:blog_home')
+
 
 # Create your views here.

@@ -1,72 +1,8 @@
+{% extends 'inherit/base.html' %}
 {% load static %}
 {% load compress %}
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Goods</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
-  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  {% compress css %}
-  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
-  {% endcompress %}
-  <!-- =======================================================
-  * Template Name: Arsha
-  * Updated: May 30 2023 with Bootstrap v5.3.0
-  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
-
-<body>
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top header-inner-pages">
-    <div class="container d-flex align-items-center">
-
-      <h1 class="logo me-auto"><a href="index.html">Arsha</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="{% static 'assets/img/logo.png' %}" alt="" class="img-fluid"></a>-->
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="{% url 'home:home' %}">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link   scrollto" href="{% url 'blog:blog_home' %}">Goods</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'home:contact' %}">Contact</a></li>
-          <li><a class="getstarted scrollto" href="{% url 'blog:add' %}">Get Started</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
-
+{% block 'title' %}Goods{% endblock 'title' %}
+{% block 'content' %}
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
@@ -89,25 +25,23 @@
   
           <div class="section-title">
             <h2>Goods</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            <p>The best and newest stuff around world.</p>
           </div>
-          {% comment %} <br>
-          <br> {% endcomment %}
-          {% comment %} <form class="search-form" action="{% url 'blog:blog_home_with_search' %}?search=">
-            <input placeholder="Search Posts" name="search" type="text"
-                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </form> {% endcomment %}
-          {% comment %} <br>
-          <br> {% endcomment %}
-  
-          {% comment %} <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter="*" class="filter-active">All</li>
-          {% for cat in category.all %}
-            <li data-filter=".filter-app"><a href="{% url 'blog:blog_home_with_category' cat=cat.name %}"></a>{{cat.name}}</li>
-          {% endfor %}
-          </ul> {% endcomment %}
-          
+          <br>
+          <style>
+            .element{
+              position: absolute:
+              left: 38%;
+              transform:translate(38%);
+            }
+          </style>
+          <form class="element" action="{% url 'blog:blog_home_with_search' %}?search=">
+            <input name="search" placeholder="Search for stuff" type="text"/>
+             
+            <button type="submit" style="background-color:blue;color:white;">Search</button>
+          </form>
+          <br>
+
 
           <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
             {% for post in posts %}
@@ -126,6 +60,53 @@
             {% endfor %}
           </div>
   
+            <style>
+              .pagination {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+              
+              .page-numbers {
+                display: inline-block;
+                padding: 5px;
+                margin: 0px 5px;
+                border-radius: 5px;
+              }
+              
+              .current {
+                background-color: blue;
+              }
+              
+              .prev,
+              .next {
+                display: inline-block;
+                padding: 5px;
+              }
+            </style>
+
+
+            <div class="pagination">
+              {% if  posts.has_previous %}
+              <a href="?page={{posts.previous_page_number}}" class="prev">Previous</a>
+              {% endif %}
+
+              {% for i in posts.paginator.page_range %}
+                {% if  posts.number == i %}
+                  <span> <a href="?page={{i}}" class="page-numbers">{{i}}</a></span>
+                {% else %}
+                  <span> <a href="?page={{i}}" class="page-numbers">{{i}}</a></span>
+                {% endif %}
+              {% endfor %}
+
+
+              {% if  posts.has_next %}
+                <a href="?page={{posts.next_page_number}}" class="next">Next</a>
+              {% endif %}
+            </div>
+	
+
+
         </div>
       </section><!-- End Portfolio Section -->
 
@@ -143,4 +124,4 @@
 
 
 <!-- ======= Footer ======= -->
-    {% include 'inherit/base.html' %}
+{% endblock 'content' %}

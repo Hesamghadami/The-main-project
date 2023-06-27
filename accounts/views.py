@@ -25,14 +25,6 @@ def Login(req) :
             username = req.POST.get('username')
             password = req.POST.get('password')
             user = authenticate(username=username,password=password)
-            userinput = req.POST['username']
-            try:
-                username = CustumUser.objects.get(email=userinput).username
-            except CustumUser.DoesNotExist:
-                username = req.POST['username']
-            password = req.POST['password']
-            user = authenticate(username=username, password=password)
-
             if user is not None:
                 login(req, user)
                 return redirect('/')

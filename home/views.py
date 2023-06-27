@@ -27,17 +27,19 @@ def home(req, cat=None):
         if form.is_valid():
             form.save()   
             return redirect('/')
+        
     
 
 def contact(req):
     if req.method == 'GET':
-        return render(req, 'home/contact.html')
+        return render(req, 'home/index.html')
     
     elif req.method == 'POST':
         form_contact = ContactUsForm(req.POST)
         if form_contact.is_valid():
             form_contact.save()
-        return redirect('/')
+            return redirect('/')
+        
     
     
     
