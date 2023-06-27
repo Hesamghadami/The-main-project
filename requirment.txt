@@ -6,6 +6,7 @@ django-ranged-response==0.2.0
 django-robots==5.0
 django-simple-captcha==0.5.17
 Pillow==9.5.0
+python-dotenv==1.0.0
 rcssmin==1.1.1
 rjsmin==1.2.1
 sqlparse==0.4.4
