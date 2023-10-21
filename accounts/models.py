@@ -10,3 +10,4 @@ class CustumUser(AbstractUser):
         return self.username
 
 # Create your models here.
+
